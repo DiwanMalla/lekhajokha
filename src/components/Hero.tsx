@@ -7,8 +7,8 @@ import Link from "next/link";
 import { ArrowRight, Activity, Clock, Target } from "lucide-react";
 
 function TrackingHud() {
-  // Agenda announced March 27, 2026. 100 days = July 5, 2026.
-  const targetDate = new Date("2026-07-05T00:00:00+05:45").getTime();
+  // Cabinet baseline: March 28, 2026. 100-day window ends July 6, 2026.
+  const targetDate = new Date("2026-07-06T00:00:00+05:45").getTime();
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
   const [mounted, setMounted] = useState(false);
   const { language } = useTranslate();
@@ -108,8 +108,8 @@ function TrackingHud() {
               />
             </div>
             <div className="flex justify-between text-[10px] text-(--muted) mt-1">
-              <span>Mar 27</span>
-              <span>Jul 5</span>
+              <span>Mar 28</span>
+              <span>Jul 6</span>
             </div>
           </div>
         </div>
