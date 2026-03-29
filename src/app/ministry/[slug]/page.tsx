@@ -57,7 +57,7 @@ export default async function MinistryPage({
         {score}% {language === "ne" ? "भारित उपलब्धि" : "weighted delivery"}
       </p>
 
-      <div className="grid grid-cols-3 gap-3 mb-6 max-w-xl">
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-6 max-w-xl">
         <div className="glass-card rounded-xl p-4 border border-(--border)">
           <p className="text-xs text-(--muted)">
             {language === "ne" ? "कुल" : "Total"}

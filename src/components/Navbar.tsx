@@ -2,15 +2,16 @@
 
 import { useTranslate } from "@/lib/i18n/useTranslate";
 import { useAppStore } from "@/store/useAppStore";
-import { Globe, Sun, Moon } from "lucide-react";
+import { Globe, Sun, Moon, Menu, X } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export default function Navbar() {
   const router = useRouter();
   const { language, toggleTheme, theme } = useAppStore();
   const { t } = useTranslate();
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   useEffect(() => {
     const lang = useAppStore.getState().language;
@@ -25,6 +26,8 @@ export default function Navbar() {
     useAppStore.setState({ language: next });
     router.refresh();
   };
+
+  const closeMobileMenu = () => setMobileOpen(false);
 
   return (
     <nav
@@ -83,8 +86,59 @@ export default function Navbar() {
           >
             {theme === "dark" ? <Sun size={14} /> : <Moon size={14} />}
           </button>
+
+          <button
+            onClick={() => setMobileOpen((prev) => !prev)}
+            className="md:hidden p-2 rounded-full border border-(--border) bg-(--card) hover:shadow-sm transition-all"
+            aria-label="Toggle navigation"
+            aria-expanded={mobileOpen}
+          >
+            {mobileOpen ? <X size={14} /> : <Menu size={14} />}
+          </button>
         </div>
       </div>
+
+      {mobileOpen && (
+        <div className="md:hidden border-t border-(--border) bg-(--card)/95 backdrop-blur px-4 py-3">
+          <div className="flex flex-col gap-1 text-sm">
+            <Link
+              href="/cabinet"
+              onClick={closeMobileMenu}
+              className="px-3 py-2 rounded-lg hover:bg-(--secondary)"
+            >
+              {t("nav.cabinet")}
+            </Link>
+            <Link
+              href="/commitments"
+              onClick={closeMobileMenu}
+              className="px-3 py-2 rounded-lg hover:bg-(--secondary)"
+            >
+              {t("nav.commitments")}
+            </Link>
+            <Link
+              href="/analytics"
+              onClick={closeMobileMenu}
+              className="px-3 py-2 rounded-lg hover:bg-(--secondary)"
+            >
+              {t("nav.analytics")}
+            </Link>
+            <Link
+              href="/news"
+              onClick={closeMobileMenu}
+              className="px-3 py-2 rounded-lg hover:bg-(--secondary)"
+            >
+              {t("nav.news")}
+            </Link>
+            <Link
+              href="/methodology"
+              onClick={closeMobileMenu}
+              className="px-3 py-2 rounded-lg hover:bg-(--secondary)"
+            >
+              {t("nav.methodology")}
+            </Link>
+          </div>
+        </div>
+      )}
     </nav>
   );
 }
