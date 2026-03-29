@@ -44,6 +44,8 @@ export default async function CommitmentDetailPage({
     .filter((row) => row.category_id === item.category_id && row.id !== item.id)
     .slice(0, 6);
 
+  const evidenceList = item.evidence_sources ?? [];
+  const hasEvidence = evidenceList.length > 0;
   const timeline = [
     {
       date: item.created_at.slice(0, 10),
@@ -53,7 +55,9 @@ export default async function CommitmentDetailPage({
     {
       date: item.last_updated.slice(0, 10),
       title: `Current status: ${item.status}`,
-      note: "Latest editorial review completed. Evidence links will be appended during verification workflow.",
+      note: hasEvidence
+        ? `Linked to ${evidenceList.length} published source(s) in Evidence & Sources.`
+        : "Latest editorial review completed. Evidence links will be appended during verification workflow.",
     },
   ];
 
@@ -159,12 +163,32 @@ export default async function CommitmentDetailPage({
             <h2 className="font-semibold mb-3">
               {language === "ne" ? "प्रमाण र स्रोतहरू" : "Evidence & Sources"}
             </h2>
-            <ul className="list-disc list-inside text-sm text-(--foreground) space-y-1">
-              <li>Official decision documents (to be linked)</li>
-              <li>Major Nepali news coverage (to be linked)</li>
-              <li>Press conference references (to be linked)</li>
-              <li>Citizen-submitted evidence (moderated)</li>
-            </ul>
+            {hasEvidence ? (
+              <ul className="space-y-4 text-sm">
+                {evidenceList.map((src, idx) => (
+                  <li key={idx} className="border-b border-(--border)/60 pb-4 last:border-0 last:pb-0">
+                    <a
+                      href={src.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="font-medium text-blue-600 dark:text-blue-400 hover:underline"
+                    >
+                      {src.title}
+                    </a>
+                    <p className="text-xs text-(--muted) mt-1">
+                      {src.outlet} · {src.published}
+                    </p>
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <ul className="list-disc list-inside text-sm text-(--foreground) space-y-1">
+                <li>Official decision documents (to be linked)</li>
+                <li>Major Nepali news coverage (to be linked)</li>
+                <li>Press conference references (to be linked)</li>
+                <li>Citizen-submitted evidence (moderated)</li>
+              </ul>
+            )}
           </div>
 
           <div className="glass-card rounded-xl p-5 border border-(--border)">

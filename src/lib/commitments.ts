@@ -2,6 +2,7 @@ import { Commitment, DeadlineType, Status } from "@/types";
 import { ministryLabel } from "@/lib/i18n/ministry-names";
 import { nepaliCopyForPoint } from "@/lib/commitments-ne";
 import { formatYmdInNepal } from "@/lib/deadline-date";
+import { evidenceForPoint } from "@/lib/commitment-evidence";
 
 const BASE_DATE = new Date("2026-03-28T00:00:00+05:45");
 
@@ -225,6 +226,8 @@ const raw: RawCommitment[] = [
     ministry: "Prime Minister's Office",
     deadline_type: "days",
     deadline_days: 7,
+    status: "in_progress",
+    progress: 10,
   },
   {
     point: 3,
@@ -277,6 +280,8 @@ const raw: RawCommitment[] = [
     ministry: "Prime Minister's Office",
     deadline_type: "days",
     deadline_days: 30,
+    status: "in_progress",
+    progress: 25,
   },
 
   {
@@ -316,6 +321,8 @@ const raw: RawCommitment[] = [
       "Apply an immediate ban on partisan affiliations; amend the Federal Civil Service Bill within 45 days of the cabinet decision (by 12 May 2026).",
     deadline_type: "days",
     deadline_days: 45,
+    status: "in_progress",
+    progress: 15,
   },
   {
     point: 13,
@@ -324,6 +331,8 @@ const raw: RawCommitment[] = [
     ministry: "Federal Affairs & General Administration",
     deadline_type: "immediate",
     deadline_days: 0,
+    status: "in_progress",
+    progress: 10,
   },
   {
     point: 14,
@@ -571,7 +580,7 @@ const raw: RawCommitment[] = [
     deadline_type: "days",
     deadline_days: 1,
     status: "in_progress",
-    progress: 35,
+    progress: 40,
   },
 
   {
@@ -770,7 +779,7 @@ const raw: RawCommitment[] = [
     deadline_type: "ongoing",
     deadline_days: null,
     status: "in_progress",
-    progress: 20,
+    progress: 30,
   },
   {
     point: 61,
@@ -1241,6 +1250,8 @@ const raw: RawCommitment[] = [
     ministry: "Foreign Affairs",
     deadline_type: "days",
     deadline_days: 7,
+    status: "in_progress",
+    progress: 20,
     sub_commitments: [
       {
         title_en:
@@ -1248,7 +1259,7 @@ const raw: RawCommitment[] = [
         title_ne:
           "अल्पकालीन, मध्यकालीन र दीर्घकालीन उपायसहित प्रारम्भिक प्रतिवेदन ७ दिनभित्र पेश गर्ने",
         deadline_days: 7,
-        status: "not_started",
+        status: "in_progress",
       },
     ],
   },
@@ -1332,6 +1343,11 @@ export const commitments: Commitment[] = raw.map((item) => {
     item.responsible_ministry_ne ?? ministryLabel(ministryEn, "ne");
   const neCopy = nepaliCopyForPoint(item.point);
   const descriptionEn = item.description_en ?? item.title_en;
+  const evidenceSources = evidenceForPoint(item.point);
+  const hasEvidence = evidenceSources.length > 0;
+  const lastUpdatedAt = hasEvidence
+    ? new Date("2026-03-30T12:00:00+05:45")
+    : new Date("2026-03-29T12:00:00+05:45");
 
   return {
     id: String(item.point),
@@ -1365,12 +1381,17 @@ export const commitments: Commitment[] = raw.map((item) => {
     deadline_date: formatYmdInNepal(deadlineDate),
     difficulty_rating: "medium",
     importance_score: 0,
-    last_updated: iso(new Date("2026-03-29T12:00:00+05:45")),
-    editorial_summary_en: "Pending editorial assessment.",
-    editorial_summary_ne: "सम्पादकीय विश्लेषण चाँडै प्रकाशन हुनेछ।",
+    last_updated: iso(lastUpdatedAt),
+    editorial_summary_en: hasEvidence
+      ? "Editors linked this entry to verified news sources (see Evidence & Sources)."
+      : "Pending editorial assessment.",
+    editorial_summary_ne: hasEvidence
+      ? "प्रमाणित समाचार स्रोतहरूसँग जोडिएको छ (प्रमाण तल)।"
+      : "सम्पादकीय विश्लेषण चाँडै प्रकाशन हुनेछ।",
     evidence_url: null,
+    evidence_sources: evidenceSources,
     created_at: iso(BASE_DATE),
-    updated_at: iso(new Date("2026-03-29T12:00:00+05:45")),
+    updated_at: iso(lastUpdatedAt),
   };
 });
 

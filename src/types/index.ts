@@ -20,6 +20,13 @@ export interface SubCommitment {
   status: Status;
 }
 
+export interface EvidenceSource {
+  title: string;
+  outlet: string;
+  published: string;
+  url: string;
+}
+
 export interface Commitment {
   id: string;
   point_number: number;
@@ -49,6 +56,8 @@ export interface Commitment {
   editorial_summary_en: string;
   editorial_summary_ne: string;
   evidence_url?: string | null;
+  /** Curated news / official coverage linked from the detail page */
+  evidence_sources?: EvidenceSource[];
   created_at: string;
   updated_at: string;
   sub_commitments?: SubCommitment[];
