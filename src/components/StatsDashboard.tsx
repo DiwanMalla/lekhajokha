@@ -3,7 +3,7 @@
 import { CountUp } from "./ui/CountUp";
 import { useTranslate } from "@/lib/i18n/useTranslate";
 import { sampleCommitments } from "@/lib/sample-data";
-import { daysUntilDeadline } from "@/lib/deadline-date";
+import { daysUntilDeadline, isOverdue } from "@/lib/deadline-date";
 import { motion } from "framer-motion";
 import {
   AlertTriangle,
@@ -38,8 +38,15 @@ export default function StatsDashboard() {
   const now = new Date();
   const getDays = (itemDate: string) => daysUntilDeadline(itemDate, now);
 
-  const overdue = commitments.filter(
-    (item) => getDays(item.deadline_date) < 0 && item.status !== "completed",
+  const overdueItems = commitments.filter(
+    (item) => item.status !== "completed" && isOverdue(item.deadline_date, now),
+  );
+  const overdue = overdueItems.length;
+  const overdueNotStarted = overdueItems.filter(
+    (item) => item.status === "not_started",
+  ).length;
+  const overdueInProgress = overdueItems.filter(
+    (item) => item.status === "in_progress",
   ).length;
   const thisWeek = commitments.filter((item) => {
     const d = getDays(item.deadline_date);
@@ -125,13 +132,15 @@ export default function StatsDashboard() {
               <>
                 कुल: {total} · सम्पन्न: {completed} · कार्यान्वयनमा:{" "}
                 {inProgress} · सुरु भएको छैन: {notStarted} · म्याद नाघेको:{" "}
-                {overdue} · समग्र: {progressPercentage}%
+                {overdue} ({overdueNotStarted} सुरु नभएको · {overdueInProgress}{" "}
+                कार्यान्वयनमा) · समग्र: {progressPercentage}%
               </>
             ) : (
               <>
                 Total: {total} · Completed: {completed} · In progress:{" "}
-                {inProgress} · Not started: {notStarted} · Overdue: {overdue} ·
-                Overall: {progressPercentage}%
+                {inProgress} · Not started: {notStarted} · Overdue: {overdue}{" "}
+                ({overdueNotStarted} not started · {overdueInProgress} in
+                progress) · Overall: {progressPercentage}%
               </>
             )}
           </p>
@@ -258,6 +267,11 @@ export default function StatsDashboard() {
                   </div>
                   <div className="text-[10px] font-semibold text-(--muted) uppercase tracking-widest">
                     {t("stats.overdue") || "Overdue Tasks"}
+                  </div>
+                  <div className="text-[10px] text-(--muted) mt-1 normal-case tracking-normal">
+                    {language === "ne"
+                      ? `${overdueNotStarted} सुरु नभएको · ${overdueInProgress} प्रगतिमा`
+                      : `${overdueNotStarted} not started · ${overdueInProgress} in progress`}
                   </div>
                 </div>
                 <div>

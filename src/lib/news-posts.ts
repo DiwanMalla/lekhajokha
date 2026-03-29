@@ -84,6 +84,16 @@ export const newsPosts: NewsPost[] = [
     body:
       "This story connects to Point #013 — strict implementation of the employee code of conduct.",
   },
+  {
+    slug: "startup-fast-track-deadline-mar-30",
+    title: "Startup Fast Track: 2-Day Registration Window Closes Mar 30",
+    date: "2026-03-29",
+    excerpt:
+      "Cabinet commitment #056 calls for a two-day business registration path; watch for launch evidence before the deadline.",
+    link: { type: "point", point: 56 },
+    body:
+      "Point #056 — Launch Startup Fast Track with 2-day business registration — is still marked not started on the tracker with a due date of 30 March 2026. If no visible registration system or directive appears by then, the item will roll to overdue alongside other stalled delivery items. Follow the commitment page for updates.",
+  },
 ];
 
 export const newsPostsBySlug = new Map(newsPosts.map((p) => [p.slug, p]));

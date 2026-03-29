@@ -89,7 +89,9 @@ export default function CommitmentList() {
 
         const matchesDeadline =
           deadline === "all" ||
-          (deadline === "overdue" && daysUntilDue < 0) ||
+          (deadline === "overdue" &&
+            item.status !== "completed" &&
+            isOverdue(item.deadline_date, now)) ||
           (deadline === "this_week" &&
             daysUntilDue >= 0 &&
             daysUntilDue <= 7) ||

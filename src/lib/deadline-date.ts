@@ -15,12 +15,13 @@ export const parseDeadlineDate = (yyyyMmDd: string, endOfDay = false): Date => {
   return new Date(`${yyyyMmDd}T${time}${NEPAL_TZ}`);
 };
 
+/** Whole calendar days until end of the due date in Nepal (negative = overdue). Uses floor so past-deadline times align with `isOverdue`. */
 export const daysUntilDeadline = (
   yyyyMmDd: string,
   now = new Date(),
 ): number => {
   const dueEndOfDay = parseDeadlineDate(yyyyMmDd, true).getTime();
-  return Math.ceil((dueEndOfDay - now.getTime()) / DAY_MS);
+  return Math.floor((dueEndOfDay - now.getTime()) / DAY_MS);
 };
 
 export const isOverdue = (yyyyMmDd: string, now = new Date()): boolean =>
