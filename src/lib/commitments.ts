@@ -1,6 +1,7 @@
 import { Commitment, DeadlineType, Status } from "@/types";
 import { ministryLabel } from "@/lib/i18n/ministry-names";
 import { nepaliCopyForPoint } from "@/lib/commitments-ne";
+import { formatYmdInNepal } from "@/lib/deadline-date";
 
 const BASE_DATE = new Date("2026-03-28T00:00:00+05:45");
 
@@ -16,7 +17,7 @@ const EXPLICIT_DUE_DATES: Record<number, string> = {
   9: "2026-04-27",
   10: "2026-04-27",
   11: "2026-04-28",
-  12: "2026-03-28",
+  12: "2026-05-12",
   13: "2026-03-28",
   14: "2026-04-12",
   15: "2026-07-16",
@@ -99,7 +100,7 @@ const EXPLICIT_DUE_DATES: Record<number, string> = {
   92: "2026-03-28",
   93: "2026-05-28",
   94: "2026-03-28",
-  95: "2026-04-27",
+  95: "2026-04-04",
   96: "2026-03-28",
   97: "2026-07-06",
   98: "2026-04-27",
@@ -753,9 +754,9 @@ const raw: RawCommitment[] = [
     categoryId: "G",
     title_en:
       "Rebrand employment centers to Employment, Skill and Entrepreneurship Centers",
-    ministry: "Education, Science & Technology",
+    ministry: "Labour, Employment & Social Security",
     shared_ministries: [
-      "Labour, Employment & Social Security",
+      "Education, Science & Technology",
       "Industry, Commerce & Supplies",
     ],
     deadline_type: "days",
@@ -1061,7 +1062,7 @@ const raw: RawCommitment[] = [
     point: 85,
     categoryId: "J",
     title_en:
-      "Enforce free-bed quota, Free Health Portal, and upgrade hospital facilities",
+      "Hospital attendance monitoring and cleanliness audits (7 days); free-bed quota, Free Health Portal, and facility upgrades (30–100 days)",
     ministry: "Health & Population",
     deadline_type: "days",
     deadline_days: 30,
@@ -1145,7 +1146,7 @@ const raw: RawCommitment[] = [
     point: 90,
     categoryId: "K",
     title_en:
-      "Fix minimum support prices for major crops and ensure timely payments",
+      "Cold storage feasibility and payment timelines (10 days); minimum support prices and timely payments (30 days)",
     ministry: "Agriculture & Livestock Development",
     deadline_type: "days",
     deadline_days: 30,
@@ -1239,7 +1240,7 @@ const raw: RawCommitment[] = [
       "Form inter-ministerial taskforce to study Middle East crisis impacts",
     ministry: "Foreign Affairs",
     deadline_type: "days",
-    deadline_days: 30,
+    deadline_days: 7,
     sub_commitments: [
       {
         title_en:
@@ -1360,8 +1361,8 @@ export const commitments: Commitment[] = raw.map((item) => {
       ...sub,
       id: `${item.point}-${String.fromCharCode(97 + i)}`,
     })),
-    deadline: deadlineDate.toISOString().slice(0, 10),
-    deadline_date: deadlineDate.toISOString().slice(0, 10),
+    deadline: formatYmdInNepal(deadlineDate),
+    deadline_date: formatYmdInNepal(deadlineDate),
     difficulty_rating: "medium",
     importance_score: 0,
     last_updated: iso(new Date("2026-03-29T12:00:00+05:45")),

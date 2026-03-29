@@ -15,8 +15,9 @@ export default async function AnalyticsPage() {
   const inProgress = sampleCommitments.filter(
     (item) => item.status === "in_progress",
   ).length;
-  const overdue = sampleCommitments.filter((item) =>
-    isOverdue(item.deadline_date),
+  const overdue = sampleCommitments.filter(
+    (item) =>
+      item.status !== "completed" && isOverdue(item.deadline_date),
   ).length;
 
   const categoryScores = Object.entries(categoryMeta).map(([id, meta]) => {
@@ -98,7 +99,10 @@ export default async function AnalyticsPage() {
         </h2>
         <ul className="space-y-2 text-sm">
           {sampleCommitments
-            .filter((item) => isOverdue(item.deadline_date))
+            .filter(
+              (item) =>
+                item.status !== "completed" && isOverdue(item.deadline_date),
+            )
             .slice(0, 15)
             .map((item) => (
               <li key={item.id}>
