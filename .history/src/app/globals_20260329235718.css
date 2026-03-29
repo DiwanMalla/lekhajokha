@@ -1,0 +1,109 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-brand-green: #10b981;
+  --color-brand-red: #ef4444;
+  --color-brand-blue: #3b82f6;
+  --color-brand-orange: #f59e0b;
+  --color-brand-gray: #6b7280;
+  --color-brand-navy: #1a365d;
+  --color-brand-amber: #d69e2e;
+
+  --font-sans:
+    "Inter", var(--font-devanagari), var(--font-geist-sans), sans-serif;
+}
+
+@layer base {
+  :root {
+    --background: #f7fafc;
+    --foreground: #1a202c;
+    --card: #ffffff;
+    --card-foreground: #1a202c;
+    --border: #e2e8f0;
+    --muted: #718096;
+    --nav-blur: rgba(247, 250, 252, 0.86);
+  }
+
+  .dark {
+    --background: #0b1726;
+    --foreground: #edf2f7;
+    --card: rgba(15, 32, 53, 0.72);
+    --card-foreground: #f9fafb;
+    --border: #23354c;
+    --muted: #94a3b8;
+    --nav-blur: rgba(11, 23, 38, 0.86);
+  }
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+
+/* Glass card effect */
+.glass-card {
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  box-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.04),
+    0 1px 2px rgba(0, 0, 0, 0.06);
+}
+
+.dark .glass-card {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* Gradient text for headings */
+.text-gradient {
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  background-image: linear-gradient(135deg, #1a365d, #d69e2e);
+}
+
+/* Hide scrollbar for filter pills */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Status colors */
+.status-not_started {
+  color: #6b7280;
+}
+.status-in_progress {
+  color: #3b82f6;
+}
+.status-completed {
+  color: #10b981;
+}
+.status-broken {
+  color: #ef4444;
+}
+.status-stalled {
+  color: #f59e0b;
+}
+
+.bg-status-not_started {
+  background-color: rgba(107, 114, 128, 0.1);
+}
+.bg-status-in_progress {
+  background-color: rgba(59, 130, 246, 0.1);
+}
+.bg-status-completed {
+  background-color: rgba(16, 185, 129, 0.1);
+}
+.bg-status-broken {
+  background-color: rgba(239, 68, 68, 0.1);
+}
+.bg-status-stalled {
+  background-color: rgba(249, 159, 11, 0.1);
+}

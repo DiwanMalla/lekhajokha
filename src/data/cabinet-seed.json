@@ -1,0 +1,302 @@
+{
+  "meta": {
+    "sworn_in_iso": "2026-03-27",
+    "sworn_in_venue_en": "Office of the President, Shital Niwas, Kathmandu",
+    "sworn_in_venue_ne": "राष्ट्रपति कार्यालय, शीतलनिवास, काठमाडौँ",
+    "party_short": "RSP",
+    "party_name_en": "Rastriya Swatantra Party",
+    "party_name_ne": "राष्ट्रिय स्वतन्त्र पार्टी",
+    "member_count": 15,
+    "prime_minister_rank_note_en": "Per oath-day reporting, the Prime Minister retained the Defence and Industry portfolios (no separate Minister for Industry, Commerce and Supplies).",
+    "prime_minister_rank_note_ne": "शपथ ग्रहणको दिनको सार्वजनिक रिपोर्ट अनुसार प्रधानमन्त्रीले रक्षा र उद्योगको जिम्मेवारी आफूसँग राख्नुभएको छ (छुट्टै उद्योग, वाणिज्य तथा आपूर्ति मन्त्री छैन)।",
+    "verification": {
+      "sources": [
+        {
+          "title_en": "Balendra Shah sworn in as 46th Prime Minister of Nepal, new cabinet takes oath",
+          "publisher_en": "Radio Nepal (Public Service Broadcasting)",
+          "url": "https://radionepalonline.com/en/2026/03/27/427141.html",
+          "date_iso": "2026-03-27",
+          "contribution_en": "Portfolio assignments on the day ministers took the oath.",
+          "contribution_ne": "मन्त्रीहरूले शपथ लिएको दिन पोर्टफोलियो तोकिएको विवरण।"
+        },
+        {
+          "title_en": "Ministers of Balen-led cabinet",
+          "publisher_en": "The Himalayan Times",
+          "url": "https://thehimalayantimes.com/nepal/ministers-of-balen-led-cabinet",
+          "date_iso": "2026-03-27",
+          "contribution_en": "Same-day numbered list of ministers sworn in (includes Agriculture portfolio).",
+          "contribution_ne": "सोही दिन प्रकाशित मन्त्रीहरूको नामावली (कृषि मन्त्री सहित)।"
+        }
+      ],
+      "discrepancies_en": "Some outlets romanize the Home Minister as Sudhan Gurung; English coverage also uses Sudan Gurung. The Himalayan Times spelled the Tourism minister as Khadak Raj Poudel; Radio Nepal used Khadka Raj Paudel—we follow the Radio Nepal spelling for the roster. Radio Nepal summarized several portfolios briefly; secondary ministries (e.g. Water Supply with Health) follow common merged-line reporting and the platform tracker ministry labels.",
+      "discrepancies_ne": "केही सञ्चार माध्यमले गृहमन्त्रीको नामलाई Sudhan / Sudan फरक रोमनाइज गर्छन्। पर्यटन मन्त्रीको बारेमा The Himalayan Times ले Khadak Raj Poudel र रेडियो नेपालले Khadka Raj Paudel लेखेको छ — हामीले रेडियो नेपालको हिज्जे अनुसरण गरेका छौँ। सञ्चारमा संक्षिप्त लेखिएका सहायक मन्त्रालय (जस्तै स्वास्थ्यसँग खानेपानी) यहाँ ट्र्याकरका मन्त्रालय नामसँग मेल खान्छन्।"
+    }
+  },
+  "ministers": [
+    {
+      "slug": "balen-shah",
+      "sort_order": 1,
+      "is_prime_minister": true,
+      "cabinet_rank": 1,
+      "name_en": "Balendra (Balen) Shah",
+      "name_ne": "बालेन्द्र (बालेन) शाह",
+      "portfolio_en": "Prime Minister; Minister for Defence; Minister for Industry",
+      "portfolio_ne": "प्रधानमन्त्री; रक्षा मन्त्री; उद्योग मन्त्री",
+      "party": "RSP",
+      "tracker_ministries": [
+        "Prime Minister's Office",
+        "Industry, Commerce & Supplies"
+      ],
+      "photo": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Balen_Shah_-_Mayor_of_Kathmandu.png/500px-Balen_Shah_-_Mayor_of_Kathmandu.png",
+        "commons_page": "https://commons.wikimedia.org/wiki/File:Balen_Shah_-_Mayor_of_Kathmandu.png",
+        "credit_short": "Metro News / CC BY 3.0 (Wikimedia Commons)"
+      }
+    },
+    {
+      "slug": "swarnim-wagle",
+      "sort_order": 2,
+      "is_prime_minister": false,
+      "cabinet_rank": 2,
+      "name_en": "Dr. Swarnim Wagle",
+      "name_ne": "डा. स्वर्णिम वाग्ले",
+      "portfolio_en": "Minister for Finance",
+      "portfolio_ne": "अर्थ मन्त्री",
+      "party": "RSP",
+      "tracker_ministries": ["Finance"],
+      "photo": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Swarnim-wagle.png/500px-Swarnim-wagle.png",
+        "commons_page": "https://commons.wikimedia.org/wiki/File:Swarnim-wagle.png",
+        "credit_short": "Wikimedia Commons"
+      }
+    },
+    {
+      "slug": "sudan-gurung",
+      "sort_order": 3,
+      "is_prime_minister": false,
+      "cabinet_rank": 3,
+      "name_en": "Sudan Gurung",
+      "name_ne": "सुदन गुरुङ",
+      "name_en_alt": ["Sudhan Gurung"],
+      "portfolio_en": "Minister for Home Affairs",
+      "portfolio_ne": "गृह मन्त्री",
+      "party": "RSP",
+      "tracker_ministries": ["Home Affairs"],
+      "photo": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Sudan_Gurung.jpg/500px-Sudan_Gurung.jpg",
+        "commons_page": "https://commons.wikimedia.org/wiki/File:Sudan_Gurung.jpg",
+        "credit_short": "Wikimedia Commons"
+      }
+    },
+    {
+      "slug": "shishir-khanal",
+      "sort_order": 4,
+      "is_prime_minister": false,
+      "cabinet_rank": 4,
+      "name_en": "Shishir Khanal",
+      "name_ne": "शिशिर खनाल",
+      "portfolio_en": "Minister for Foreign Affairs",
+      "portfolio_ne": "परराष्ट्र मन्त्री",
+      "party": "RSP",
+      "tracker_ministries": ["Foreign Affairs"],
+      "photo": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Shishir_Khanal%2C_official_portrait_%282026%29.jpg/500px-Shishir_Khanal%2C_official_portrait_%282026%29.jpg",
+        "commons_page": "https://commons.wikimedia.org/wiki/File:Shishir_Khanal,_official_portrait_(2026).jpg",
+        "credit_short": "Wikimedia Commons"
+      }
+    },
+    {
+      "slug": "sunil-lamsal",
+      "sort_order": 5,
+      "is_prime_minister": false,
+      "cabinet_rank": 5,
+      "name_en": "Sunil Lamsal",
+      "name_ne": "सुनिल लम्साल",
+      "portfolio_en": "Minister for Physical Infrastructure and Transport; Minister for Urban Development",
+      "portfolio_ne": "भौतिक पूर्वाधार तथा यातायात मन्त्री; सहरी विकास मन्त्री",
+      "party": "RSP",
+      "tracker_ministries": [
+        "Physical Infrastructure & Transport",
+        "Urban Development"
+      ],
+      "photo": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/Er._Sunil_Lamsal.jpg/500px-Er._Sunil_Lamsal.jpg",
+        "commons_page": "https://commons.wikimedia.org/wiki/File:Er._Sunil_Lamsal.jpg",
+        "credit_short": "Wikimedia Commons"
+      }
+    },
+    {
+      "slug": "biraj-bhakta-shrestha",
+      "sort_order": 6,
+      "is_prime_minister": false,
+      "cabinet_rank": 6,
+      "name_en": "Biraj Bhakta Shrestha",
+      "name_ne": "विराजभक्त श्रेष्ठ",
+      "portfolio_en": "Minister for Energy, Water Resources and Irrigation",
+      "portfolio_ne": "ऊर्जा, जलस्रोत तथा सिँचाइ मन्त्री",
+      "party": "RSP",
+      "tracker_ministries": ["Energy, Water Resources & Irrigation"],
+      "photo": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Biraj_Bhakta_Shrestha.jpg/500px-Biraj_Bhakta_Shrestha.jpg",
+        "commons_page": "https://commons.wikimedia.org/wiki/File:Biraj_Bhakta_Shrestha.jpg",
+        "credit_short": "Wikimedia Commons"
+      }
+    },
+    {
+      "slug": "khadka-raj-paudel",
+      "sort_order": 7,
+      "is_prime_minister": false,
+      "cabinet_rank": 7,
+      "name_en": "Khadka Raj Paudel",
+      "name_ne": "खडकराज पौडेल",
+      "name_en_alt": ["Khadak Raj Poudel"],
+      "portfolio_en": "Minister for Culture, Tourism and Civil Aviation",
+      "portfolio_ne": "संस्कृति, पर्यटन तथा नागरिक उड्डयन मन्त्री",
+      "party": "RSP",
+      "tracker_ministries": ["Culture, Tourism & Civil Aviation"]
+    },
+    {
+      "slug": "sasmit-pokharel",
+      "sort_order": 8,
+      "is_prime_minister": false,
+      "cabinet_rank": 8,
+      "name_en": "Sasmit Pokharel",
+      "name_ne": "सस्मित पोखरेल",
+      "portfolio_en": "Minister for Education, Science and Technology; Minister for Youth and Sports",
+      "portfolio_ne": "शिक्षा, विज्ञान तथा प्रविधि मन्त्री; युवा तथा खेलकुद मन्त्री",
+      "party": "RSP",
+      "tracker_ministries": ["Education, Science & Technology"],
+      "photo": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Sasmitportrait1.jpg/500px-Sasmitportrait1.jpg",
+        "commons_page": "https://commons.wikimedia.org/wiki/File:Sasmitportrait1.jpg",
+        "credit_short": "Wikimedia Commons"
+      }
+    },
+    {
+      "slug": "nisha-mehta",
+      "sort_order": 9,
+      "is_prime_minister": false,
+      "cabinet_rank": 9,
+      "name_en": "Nisha Mehta",
+      "name_ne": "निशा मेहता",
+      "portfolio_en": "Minister for Health and Population; Minister for Water Supply",
+      "portfolio_ne": "स्वास्थ्य तथा जनसंख्या मन्त्री; खानेपानी मन्त्री",
+      "party": "RSP",
+      "tracker_ministries": ["Health & Population", "Water Supply"],
+      "photo": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Nisha_Mehta.jpg/500px-Nisha_Mehta.jpg",
+        "commons_page": "https://commons.wikimedia.org/wiki/File:Nisha_Mehta.jpg",
+        "credit_short": "Wikimedia Commons"
+      }
+    },
+    {
+      "slug": "bikram-timilsina",
+      "sort_order": 10,
+      "is_prime_minister": false,
+      "cabinet_rank": 10,
+      "name_en": "Dr. Bikram Timilsina",
+      "name_ne": "डा. विक्रम तिमिल्सिना",
+      "portfolio_en": "Minister for Communication and Information Technology",
+      "portfolio_ne": "सञ्चार तथा सूचना प्रविधि मन्त्री",
+      "party": "RSP",
+      "tracker_ministries": ["Communication & IT"],
+      "photo": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Dr._Bikram_Timilsina.jpg/500px-Dr._Bikram_Timilsina.jpg",
+        "commons_page": "https://commons.wikimedia.org/wiki/File:Dr._Bikram_Timilsina.jpg",
+        "credit_short": "Wikimedia Commons"
+      }
+    },
+    {
+      "slug": "pratibha-rawal",
+      "sort_order": 11,
+      "is_prime_minister": false,
+      "cabinet_rank": 11,
+      "name_en": "Pratibha Rawal",
+      "name_ne": "प्रतिभा रावल",
+      "portfolio_en": "Minister for Federal Affairs and General Administration; Minister for Land Management, Cooperatives and Poverty Alleviation",
+      "portfolio_ne": "संघीय मामिला तथा सामान्य प्रशासन मन्त्री; भूमिसुधार, सहकारी तथा गरिबी निवारण मन्त्री",
+      "party": "RSP",
+      "tracker_ministries": [
+        "Federal Affairs & General Administration",
+        "Land Management, Cooperatives & Poverty Alleviation"
+      ],
+      "photo": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Pratibha_Rawal.jpg/500px-Pratibha_Rawal.jpg",
+        "commons_page": "https://commons.wikimedia.org/wiki/File:Pratibha_Rawal.jpg",
+        "credit_short": "Wikimedia Commons"
+      }
+    },
+    {
+      "slug": "sobita-gautam",
+      "sort_order": 12,
+      "is_prime_minister": false,
+      "cabinet_rank": 12,
+      "name_en": "Sobita Gautam",
+      "name_ne": "सोबिता गौतम",
+      "portfolio_en": "Minister for Law, Justice and Parliamentary Affairs",
+      "portfolio_ne": "कानून, न्याय तथा संसदीय मामिला मन्त्री",
+      "party": "RSP",
+      "tracker_ministries": ["Law, Justice & Parliamentary Affairs"],
+      "photo": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Sobita_Gautam%2C_official_portrait_%282025%29.jpg/500px-Sobita_Gautam%2C_official_portrait_%282025%29.jpg",
+        "commons_page": "https://commons.wikimedia.org/wiki/File:Sobita_Gautam,_official_portrait_(2025).jpg",
+        "credit_short": "Wikimedia Commons"
+      }
+    },
+    {
+      "slug": "geeta-chaudhary",
+      "sort_order": 13,
+      "is_prime_minister": false,
+      "cabinet_rank": 13,
+      "name_en": "Geeta Chaudhary",
+      "name_ne": "गीता चौधरी",
+      "portfolio_en": "Minister for Agriculture and Livestock Development; Minister for Forests and Environment",
+      "portfolio_ne": "कृषि तथा पशुपन्छी विकास मन्त्री; वन तथा वातावरण मन्त्री",
+      "party": "RSP",
+      "tracker_ministries": [
+        "Agriculture & Livestock Development",
+        "Forests & Environment"
+      ],
+      "photo": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Gita_Chaudhary%2C_portrait_%282026%29.jpg/500px-Gita_Chaudhary%2C_portrait_%282026%29.jpg",
+        "commons_page": "https://commons.wikimedia.org/wiki/File:Gita_Chaudhary,_portrait_(2026).jpg",
+        "credit_short": "Wikimedia Commons"
+      }
+    },
+    {
+      "slug": "dipak-kumar-sah",
+      "sort_order": 14,
+      "is_prime_minister": false,
+      "cabinet_rank": 14,
+      "name_en": "Dipak Kumar Sah",
+      "name_ne": "दीपक कुमार साह",
+      "name_en_alt": ["Deepak Kumar Sah", "Dipak Sah"],
+      "portfolio_en": "Minister for Labour, Employment and Social Security",
+      "portfolio_ne": "श्रम, रोजगार तथा सामाजिक सुरक्षा मन्त्री",
+      "party": "RSP",
+      "tracker_ministries": ["Labour, Employment & Social Security"],
+      "photo": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Dipak_Kumar_Sah%2C_official_portrait_%282026%29.jpg/500px-Dipak_Kumar_Sah%2C_official_portrait_%282026%29.jpg",
+        "commons_page": "https://commons.wikimedia.org/wiki/File:Dipak_Kumar_Sah,_official_portrait_(2026).jpg",
+        "credit_short": "Wikimedia Commons"
+      }
+    },
+    {
+      "slug": "sita-badi",
+      "sort_order": 15,
+      "is_prime_minister": false,
+      "cabinet_rank": 15,
+      "name_en": "Sita Badi",
+      "name_ne": "सीता बडी",
+      "portfolio_en": "Minister for Women, Children and Senior Citizens",
+      "portfolio_ne": "महिला, बालबालिका तथा जेष्ठ नागरिक मन्त्री",
+      "party": "RSP",
+      "tracker_ministries": ["Women, Children & Senior Citizens"],
+      "photo": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Sita_Badi.jpg/500px-Sita_Badi.jpg",
+        "commons_page": "https://commons.wikimedia.org/wiki/File:Sita_Badi.jpg",
+        "credit_short": "Wikimedia Commons"
+      }
+    }
+  ]
+}
