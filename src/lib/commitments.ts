@@ -1,7 +1,114 @@
 import { Commitment, DeadlineType, Status } from "@/types";
 import { ministryLabel } from "@/lib/i18n/ministry-names";
+import { nepaliCopyForPoint } from "@/lib/commitments-ne";
 
 const BASE_DATE = new Date("2026-03-28T00:00:00+05:45");
+
+const EXPLICIT_DUE_DATES: Record<number, string> = {
+  1: "2026-03-28",
+  2: "2026-04-04",
+  3: "2026-07-06",
+  4: "2026-04-04",
+  5: "2026-04-12",
+  6: "2026-07-06",
+  7: "2026-04-04",
+  8: "2026-04-27",
+  9: "2026-04-27",
+  10: "2026-04-27",
+  11: "2026-04-28",
+  12: "2026-03-28",
+  13: "2026-03-28",
+  14: "2026-04-12",
+  15: "2026-07-16",
+  16: "2026-05-12",
+  17: "2026-05-12",
+  18: "2026-07-06",
+  19: "2026-06-28",
+  20: "2026-07-06",
+  21: "2026-03-28",
+  22: "2026-04-12",
+  23: "2026-04-28",
+  24: "2026-07-06",
+  25: "2026-07-06",
+  26: "2026-07-06",
+  27: "2026-07-06",
+  28: "2026-07-06",
+  29: "2026-05-27",
+  30: "2026-07-06",
+  31: "2026-05-12",
+  32: "2026-06-28",
+  33: "2026-04-28",
+  34: "2026-04-27",
+  35: "2026-04-12",
+  36: "2026-07-06",
+  37: "2026-05-27",
+  38: "2026-05-27",
+  39: "2026-06-28",
+  40: "2026-05-27",
+  41: "2026-05-27",
+  42: "2026-03-29",
+  43: "2026-04-12",
+  44: "2026-04-27",
+  45: "2026-07-06",
+  46: "2026-04-12",
+  47: "2026-04-27",
+  48: "2026-04-27",
+  49: "2026-05-28",
+  50: "2026-06-26",
+  51: "2026-05-27",
+  52: "2026-05-12",
+  53: "2026-07-06",
+  54: "2026-06-26",
+  55: "2026-04-28",
+  56: "2026-03-30",
+  57: "2026-04-27",
+  58: "2026-05-12",
+  59: "2026-05-27",
+  60: "2026-03-28",
+  61: "2026-04-27",
+  62: "2026-03-28",
+  63: "2026-07-06",
+  64: "2026-03-28",
+  65: "2026-04-27",
+  66: "2026-05-12",
+  67: "2026-04-12",
+  68: "2026-06-28",
+  69: "2026-03-28",
+  70: "2026-03-28",
+  71: "2026-07-06",
+  72: "2026-04-28",
+  73: "2026-04-12",
+  74: "2026-04-28",
+  75: "2026-04-27",
+  76: "2026-06-28",
+  77: "2026-05-28",
+  78: "2026-06-26",
+  79: "2026-04-28",
+  80: "2026-05-12",
+  81: "2026-05-27",
+  82: "2026-06-28",
+  83: "2026-07-06",
+  84: "2026-05-27",
+  85: "2026-04-04",
+  86: "2026-05-27",
+  87: "2026-07-06",
+  88: "2026-03-28",
+  89: "2027-04-15",
+  90: "2026-04-07",
+  91: "2026-05-27",
+  92: "2026-03-28",
+  93: "2026-05-28",
+  94: "2026-03-28",
+  95: "2026-04-27",
+  96: "2026-03-28",
+  97: "2026-07-06",
+  98: "2026-04-27",
+  99: "2026-07-06",
+  100: "2026-07-06",
+};
+
+/** Lead institution for digital asset and monetary-policy led points. */
+const NRB = "Nepal Rastra Bank (NRB)";
 
 export const categoryMeta: Record<
   string,
@@ -96,6 +203,7 @@ type RawCommitment = {
   status?: Status;
   progress?: number;
   sub_commitments?: Omit<import("@/types").SubCommitment, "id">[];
+  shared_ministries?: string[];
 };
 
 const raw: RawCommitment[] = [
@@ -122,7 +230,7 @@ const raw: RawCommitment[] = [
     categoryId: "A",
     title_en:
       "Synthesize all party manifestos into a National Commitment linked to budgets and policy",
-    ministry: "Finance",
+    ministry: "Prime Minister's Office",
     deadline_type: "ongoing",
     deadline_days: null,
   },
@@ -130,7 +238,7 @@ const raw: RawCommitment[] = [
     point: 4,
     categoryId: "A",
     title_en: "Form task force for Constitutional Amendment Discussion Paper",
-    ministry: "Law, Justice & Parliamentary Affairs",
+    ministry: "Prime Minister's Office",
     deadline_type: "days",
     deadline_days: 7,
   },
@@ -139,7 +247,7 @@ const raw: RawCommitment[] = [
     categoryId: "A",
     title_en:
       "Issue formal state apology to Dalit and marginalized communities with reform programs",
-    ministry: "Women, Children & Senior Citizens",
+    ministry: "Prime Minister's Office",
     deadline_type: "days",
     deadline_days: 15,
   },
@@ -156,7 +264,7 @@ const raw: RawCommitment[] = [
     point: 7,
     categoryId: "A",
     title_en: "Form high-level inquiry committee on September 9, 2025 events",
-    ministry: "Home Affairs",
+    ministry: "Prime Minister's Office",
     deadline_type: "days",
     deadline_days: 7,
   },
@@ -193,7 +301,7 @@ const raw: RawCommitment[] = [
     point: 11,
     categoryId: "B",
     title_en: "Dissolve or merge unproductive boards, committees and projects",
-    ministry: "Federal Affairs & General Administration",
+    ministry: "Prime Minister's Office",
     deadline_type: "months",
     deadline_days: 30,
   },
@@ -203,8 +311,10 @@ const raw: RawCommitment[] = [
     title_en:
       "Ban partisan affiliations among civil servants, teachers and professors",
     ministry: "Federal Affairs & General Administration",
-    deadline_type: "immediate",
-    deadline_days: 0,
+    description_en:
+      "Apply an immediate ban on partisan affiliations; amend the Federal Civil Service Bill within 45 days of the cabinet decision (by 12 May 2026).",
+    deadline_type: "days",
+    deadline_days: 45,
   },
   {
     point: 13,
@@ -236,7 +346,7 @@ const raw: RawCommitment[] = [
     categoryId: "B",
     title_en:
       "Introduce job-specific KPIs in 45 days and review system in 90 days",
-    ministry: "Prime Minister's Office",
+    ministry: "Federal Affairs & General Administration",
     deadline_type: "days",
     deadline_days: 45,
   },
@@ -252,7 +362,7 @@ const raw: RawCommitment[] = [
     point: 18,
     categoryId: "B",
     title_en: "Standardize government office layout and infrastructure",
-    ministry: "Physical Infrastructure & Transport",
+    ministry: "Federal Affairs & General Administration",
     deadline_type: "days",
     deadline_days: 100,
   },
@@ -271,7 +381,7 @@ const raw: RawCommitment[] = [
     categoryId: "C",
     title_en:
       "Establish citizen service centers in major cities for 12+ hours daily service",
-    ministry: "Home Affairs",
+    ministry: "Federal Affairs & General Administration",
     deadline_type: "ongoing",
     deadline_days: null,
   },
@@ -281,6 +391,7 @@ const raw: RawCommitment[] = [
     title_en:
       "Use National ID as primary identity and allow services from any district",
     ministry: "Home Affairs",
+    shared_ministries: ["Federal Affairs & General Administration"],
     deadline_type: "ongoing",
     deadline_days: null,
   },
@@ -380,7 +491,8 @@ const raw: RawCommitment[] = [
     point: 33,
     categoryId: "D",
     title_en: "Enable e-signatures through biometrics, NID and OTP",
-    ministry: "Communication & IT",
+    ministry: "Home Affairs",
+    shared_ministries: ["Communication & IT"],
     deadline_type: "ongoing",
     deadline_days: null,
   },
@@ -389,7 +501,7 @@ const raw: RawCommitment[] = [
     categoryId: "D",
     title_en:
       "Implement desk-time alert system for delayed file movement in GIOMS",
-    ministry: "Prime Minister's Office",
+    ministry: "Communication & IT",
     deadline_type: "days",
     deadline_days: 30,
   },
@@ -414,7 +526,7 @@ const raw: RawCommitment[] = [
     point: 37,
     categoryId: "D",
     title_en: "Draft personal data protection and digital governance policy",
-    ministry: "Law, Justice & Parliamentary Affairs",
+    ministry: "Communication & IT",
     deadline_type: "days",
     deadline_days: 60,
   },
@@ -438,7 +550,7 @@ const raw: RawCommitment[] = [
     point: 40,
     categoryId: "D",
     title_en: "Draft Information Technology and E-Governance Bill",
-    ministry: "Law, Justice & Parliamentary Affairs",
+    ministry: "Communication & IT",
     deadline_type: "days",
     deadline_days: 60,
   },
@@ -454,7 +566,7 @@ const raw: RawCommitment[] = [
     point: 42,
     categoryId: "D",
     title_en: "Shut down all betting apps and websites",
-    ministry: "Home Affairs",
+    ministry: "Communication & IT",
     deadline_type: "days",
     deadline_days: 1,
     status: "in_progress",
@@ -484,7 +596,8 @@ const raw: RawCommitment[] = [
     point: 45,
     categoryId: "E",
     title_en: "Build digital asset registry with red-flag alerts",
-    ministry: "Finance",
+    ministry: NRB,
+    shared_ministries: ["Finance"],
     deadline_type: "days",
     deadline_days: 100,
     status: "in_progress",
@@ -503,7 +616,8 @@ const raw: RawCommitment[] = [
     categoryId: "E",
     title_en:
       "Issue National Integrity Policy and Whistleblower Protection rules",
-    ministry: "Law, Justice & Parliamentary Affairs",
+    ministry: "Prime Minister's Office",
+    shared_ministries: ["Law, Justice & Parliamentary Affairs"],
     deadline_type: "days",
     deadline_days: 30,
   },
@@ -523,6 +637,7 @@ const raw: RawCommitment[] = [
     title_en:
       "Create national project pipeline and project facilitation mechanism",
     ministry: "National Planning Commission",
+    shared_ministries: ["Prime Minister's Office", "Finance"],
     deadline_type: "months",
     deadline_days: 60,
     sub_commitments: [
@@ -596,6 +711,7 @@ const raw: RawCommitment[] = [
     title_en:
       "Categorize major projects into public, PPP and private modalities",
     ministry: "Investment Board Nepal",
+    shared_ministries: ["National Planning Commission", "Finance"],
     deadline_type: "days",
     deadline_days: 90,
   },
@@ -612,14 +728,15 @@ const raw: RawCommitment[] = [
     categoryId: "G",
     title_en: "Launch Startup Fast Track with 2-day business registration",
     ministry: "Industry, Commerce & Supplies",
-    deadline_type: "immediate",
-    deadline_days: 0,
+    deadline_type: "days",
+    deadline_days: 2,
   },
   {
     point: 57,
     categoryId: "G",
     title_en: "Reduce risk weightage for SME, agriculture and IT lending",
-    ministry: "Finance",
+    ministry: NRB,
+    shared_ministries: ["Finance"],
     deadline_type: "days",
     deadline_days: 30,
   },
@@ -636,7 +753,11 @@ const raw: RawCommitment[] = [
     categoryId: "G",
     title_en:
       "Rebrand employment centers to Employment, Skill and Entrepreneurship Centers",
-    ministry: "Labour, Employment & Social Security",
+    ministry: "Education, Science & Technology",
+    shared_ministries: [
+      "Labour, Employment & Social Security",
+      "Industry, Commerce & Supplies",
+    ],
     deadline_type: "days",
     deadline_days: 60,
   },
@@ -644,7 +765,7 @@ const raw: RawCommitment[] = [
     point: 60,
     categoryId: "G",
     title_en: "Implement Private Sector Protection and Promotion Strategy",
-    ministry: "Industry, Commerce & Supplies",
+    ministry: "Prime Minister's Office",
     deadline_type: "ongoing",
     deadline_days: null,
     status: "in_progress",
@@ -673,7 +794,8 @@ const raw: RawCommitment[] = [
     categoryId: "G",
     title_en:
       "Issue subsidized interest and rehabilitation package for unrest-affected businesses",
-    ministry: "Finance",
+    ministry: NRB,
+    shared_ministries: ["Finance"],
     deadline_type: "ongoing",
     deadline_days: null,
   },
@@ -694,6 +816,10 @@ const raw: RawCommitment[] = [
     title_en:
       "Integrate overlapping roles of Investment Board, Industry Department and Trade Center",
     ministry: "Prime Minister's Office",
+    shared_ministries: [
+      "Investment Board Nepal",
+      "Industry, Commerce & Supplies",
+    ],
     deadline_type: "days",
     deadline_days: 30,
   },
@@ -711,7 +837,7 @@ const raw: RawCommitment[] = [
     categoryId: "G",
     title_en:
       "Enable automatic data exchange between Company Registrar and Industry Department",
-    ministry: "Communication & IT",
+    ministry: "Industry, Commerce & Supplies",
     deadline_type: "months",
     deadline_days: 60,
   },
@@ -730,6 +856,7 @@ const raw: RawCommitment[] = [
     title_en:
       "Implement SME protection strategy and business rehabilitation mechanism",
     ministry: "Industry, Commerce & Supplies",
+    shared_ministries: ["Prime Minister's Office", "Home Affairs", "Finance"],
     deadline_type: "ongoing",
     deadline_days: null,
     sub_commitments: [
@@ -802,6 +929,7 @@ const raw: RawCommitment[] = [
     title_en:
       "Multi-dimensional energy export, PPA strategy and institutional reform",
     ministry: "Energy, Water Resources & Irrigation",
+    shared_ministries: ["Finance", "Prime Minister's Office"],
     deadline_type: "months",
     deadline_days: 30,
     sub_commitments: [
@@ -845,7 +973,8 @@ const raw: RawCommitment[] = [
     categoryId: "H",
     title_en:
       "Create Kathmandu water and sewage high-level coordination taskforce",
-    ministry: "Water Supply",
+    ministry: "Prime Minister's Office",
+    shared_ministries: ["Water Supply", "Health & Population"],
     deadline_type: "ongoing",
     deadline_days: null,
   },
@@ -923,6 +1052,7 @@ const raw: RawCommitment[] = [
     title_en:
       "Create legal basis to use dormant court and government deposits for development",
     ministry: "Law, Justice & Parliamentary Affairs",
+    shared_ministries: ["Finance"],
     deadline_type: "days",
     deadline_days: 60,
   },
@@ -1048,16 +1178,42 @@ const raw: RawCommitment[] = [
       "Digitize landless records in 60 days and resolve within 1,000 days",
     ministry: "Land Management, Cooperatives & Poverty Alleviation",
     deadline_type: "days",
-    deadline_days: 1000,
+    deadline_days: 60,
+    sub_commitments: [
+      {
+        title_en: "Complete integrated digital records and verification",
+        title_ne:
+          "एकीकृत डिजिटल लगत सङ्कलन तथा प्रमाणीकरण ६० दिनभित्र पूरा गर्ने",
+        deadline_days: 60,
+        status: "not_started",
+      },
+      {
+        title_en: "Resolve landless settlement process within 1,000 days",
+        title_ne: "भूमिहीन समस्या समाधान १००० दिनभित्र सम्पन्न गर्ने",
+        deadline_days: 1000,
+        status: "not_started",
+      },
+    ],
   },
   {
     point: 92,
     categoryId: "K",
     title_en:
       "Remove encroachment on public land and investigate Nepal Bal Sangathan per Haribaboo report",
-    ministry: "Home Affairs",
+    ministry: "Land Management, Cooperatives & Poverty Alleviation",
+    shared_ministries: ["Home Affairs"],
     deadline_type: "immediate",
-    deadline_days: 15,
+    deadline_days: 0,
+    sub_commitments: [
+      {
+        title_en:
+          "Begin Haribaboo Commission based Nepal Bal Sangathan investigation",
+        title_ne:
+          "हरिबाबु आयोग प्रतिवेदनअनुसार नेपाल बाल संगठनसम्बन्धी अनुसन्धान १५ दिनभित्र सुरु गर्ने",
+        deadline_days: 15,
+        status: "not_started",
+      },
+    ],
   },
 
   {
@@ -1083,7 +1239,17 @@ const raw: RawCommitment[] = [
       "Form inter-ministerial taskforce to study Middle East crisis impacts",
     ministry: "Foreign Affairs",
     deadline_type: "days",
-    deadline_days: 7,
+    deadline_days: 30,
+    sub_commitments: [
+      {
+        title_en:
+          "Submit initial assessment report with short/mid/long-term measures",
+        title_ne:
+          "अल्पकालीन, मध्यकालीन र दीर्घकालीन उपायसहित प्रारम्भिक प्रतिवेदन ७ दिनभित्र पेश गर्ने",
+        deadline_days: 7,
+        status: "not_started",
+      },
+    ],
   },
   {
     point: 96,
@@ -1099,6 +1265,7 @@ const raw: RawCommitment[] = [
     title_en:
       "Launch free Blue Bus service in all 7 provinces with 25 buses in 100 days",
     ministry: "Physical Infrastructure & Transport",
+    shared_ministries: ["Women, Children & Senior Citizens"],
     deadline_type: "days",
     deadline_days: 100,
   },
@@ -1108,6 +1275,7 @@ const raw: RawCommitment[] = [
     title_en:
       "Mandate CCTV and dashcams in public transport with SOS integration",
     ministry: "Physical Infrastructure & Transport",
+    shared_ministries: ["Home Affairs"],
     deadline_type: "days",
     deadline_days: 30,
   },
@@ -1139,7 +1307,14 @@ const addDays = (base: Date, days: number) => {
 
 const iso = (date: Date) => date.toISOString();
 
+const nepalDate = (yyyyMmDd: string) => new Date(`${yyyyMmDd}T00:00:00+05:45`);
+
 const toDeadlineDate = (item: RawCommitment): Date => {
+  const explicitDate = EXPLICIT_DUE_DATES[item.point];
+  if (explicitDate) {
+    return nepalDate(explicitDate);
+  }
+
   if (item.deadline_days === null) {
     return addDays(BASE_DATE, 100);
   }
@@ -1154,22 +1329,29 @@ export const commitments: Commitment[] = raw.map((item) => {
   const ministryEn = item.responsible_ministry_en ?? item.ministry;
   const ministryNe =
     item.responsible_ministry_ne ?? ministryLabel(ministryEn, "ne");
+  const neCopy = nepaliCopyForPoint(item.point);
+  const descriptionEn = item.description_en ?? item.title_en;
 
   return {
     id: String(item.point),
     point_number: item.point,
     title_en: item.title_en,
-    title_ne: item.title_ne ?? item.title_en,
-    description_en: item.description_en ?? item.title_en,
-    description_ne: item.description_ne ?? item.title_ne ?? item.title_en,
+    title_ne: item.title_ne ?? neCopy?.title ?? item.title_en,
+    description_en: descriptionEn,
+    description_ne:
+      item.description_ne ??
+      neCopy?.description ??
+      neCopy?.title ??
+      descriptionEn,
     category_id: item.categoryId,
     category_name_en: meta.name_en,
     category_name_ne: meta.name_ne,
     category: meta.name_en,
-    ministry: item.ministry,
+    ministry: ministryEn,
     responsible_ministry: ministryEn,
     responsible_ministry_en: ministryEn,
     responsible_ministry_ne: ministryNe,
+    shared_ministries: item.shared_ministries ?? [],
     status,
     progress_percentage: item.progress ?? (status === "in_progress" ? 20 : 0),
     deadline_type: item.deadline_type,

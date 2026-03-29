@@ -1,14 +1,13 @@
 "use client";
 
-import Link from "next/link";
 import { CountUp } from "./ui/CountUp";
 import { useTranslate } from "@/lib/i18n/useTranslate";
 import { sampleCommitments } from "@/lib/sample-data";
+import { daysUntilDeadline } from "@/lib/deadline-date";
 import { motion } from "framer-motion";
 import {
   AlertTriangle,
   CircleCheck,
-  CircleDashed,
   CircleX,
   Clock,
   ListChecks,
@@ -37,10 +36,7 @@ export default function StatsDashboard() {
   ).length;
 
   const now = new Date();
-  const getDays = (itemDate: string) =>
-    Math.ceil(
-      (new Date(itemDate).getTime() - now.getTime()) / (1000 * 60 * 60 * 24),
-    );
+  const getDays = (itemDate: string) => daysUntilDeadline(itemDate, now);
 
   const overdue = commitments.filter(
     (item) => getDays(item.deadline_date) < 0 && item.status !== "completed",
@@ -49,8 +45,12 @@ export default function StatsDashboard() {
     const d = getDays(item.deadline_date);
     return d >= 0 && d <= 7 && item.status !== "completed";
   }).length;
+  const thisMonth = commitments.filter((item) => {
+    const d = getDays(item.deadline_date);
+    return d >= 0 && d <= 30 && item.status !== "completed";
+  }).length;
 
-  const progressPercentage = Math.round((completed / total) * 100) || 1; // avoid 0% initially for visual scale
+  const progressPercentage = Math.round((completed / total) * 100);
   const activePercentage = Math.round((inProgress / total) * 100);
 
   const latestUpdates = commitments
@@ -109,12 +109,33 @@ export default function StatsDashboard() {
   return (
     <section className="py-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
       {/* Title */}
-      <div className="mb-8 flex items-center justify-between">
+      <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
         <h2 className="text-2xl font-extrabold tracking-tight">
           {language === "ne"
             ? "राष्ट्रिय प्रगति ड्यासबोर्ड"
             : "National Progress Dashboard"}
         </h2>
+        <div
+          className="text-sm text-(--foreground)/90 rounded-2xl border border-(--border)/60 bg-(--card)/80 px-4 py-3 shadow-sm"
+          role="status"
+          aria-live="polite"
+        >
+          <p className="font-semibold leading-relaxed">
+            {language === "ne" ? (
+              <>
+                कुल: {total} · सम्पन्न: {completed} · कार्यान्वयनमा:{" "}
+                {inProgress} · सुरु भएको छैन: {notStarted} · म्याद नाघेको:{" "}
+                {overdue} · समग्र: {progressPercentage}%
+              </>
+            ) : (
+              <>
+                Total: {total} · Completed: {completed} · In progress:{" "}
+                {inProgress} · Not started: {notStarted} · Overdue: {overdue} ·
+                Overall: {progressPercentage}%
+              </>
+            )}
+          </p>
+        </div>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
@@ -140,7 +161,7 @@ export default function StatsDashboard() {
             </div>
             <p className="text-sm text-(--muted) mb-8">
               {language === "ne"
-                ? `हालसम्म ${inProgress}% कार्यन्वयन चरणमा रहेका छन्।`
+                ? `${activePercentage}% प्रतिबद्धता कार्यान्वयन चरणमा छन्।`
                 : `${activePercentage}% of commitments are currently under active implementation.`}
             </p>
           </div>
@@ -230,7 +251,7 @@ export default function StatsDashboard() {
                   {t("stats.urgencyTitle") || "Critical Deadlines"}
                 </h3>
               </div>
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-3 gap-3">
                 <div>
                   <div className="text-2xl font-bold text-red-500">
                     {overdue}
@@ -245,6 +266,14 @@ export default function StatsDashboard() {
                   </div>
                   <div className="text-[10px] font-semibold text-(--muted) uppercase tracking-widest">
                     {t("stats.dueWeek") || "Due This Week"}
+                  </div>
+                </div>
+                <div>
+                  <div className="text-2xl font-bold text-amber-600/90">
+                    {thisMonth}
+                  </div>
+                  <div className="text-[10px] font-semibold text-(--muted) uppercase tracking-widest">
+                    {language === "ne" ? "यो महिना म्याद" : "Due This Month"}
                   </div>
                 </div>
               </div>

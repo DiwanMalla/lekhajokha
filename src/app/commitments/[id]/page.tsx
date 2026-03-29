@@ -4,6 +4,7 @@ import { cookies } from "next/headers";
 import { commitmentsById, categoryMeta } from "@/lib/commitments";
 import { sampleCommitments } from "@/lib/sample-data";
 import { toSlug } from "@/lib/slug";
+import { ministryLabel } from "@/lib/i18n/ministry-names";
 
 export function generateStaticParams() {
   return sampleCommitments.map((item) => ({ id: item.id }));
@@ -85,6 +86,24 @@ export default async function CommitmentDetailPage({
             {language === "ne" ? "समयसीमा" : "Deadline"}: {item.deadline_date}
           </span>
         </div>
+        {item.shared_ministries && item.shared_ministries.length > 0 ? (
+          <p className="text-sm text-(--muted) mt-3">
+            <span className="font-semibold text-(--foreground)">
+              {language === "ne"
+                ? "समन्वय / सहायक जिम्मेवारी:"
+                : "Coordinating accountability:"}{" "}
+            </span>
+            {item.shared_ministries.map((sm) => (
+              <Link
+                key={sm}
+                href={`/ministry/${toSlug(sm)}`}
+                className="inline-block mr-2 underline-offset-2 hover:underline"
+              >
+                {ministryLabel(sm, language)}
+              </Link>
+            ))}
+          </p>
+        ) : null}
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">

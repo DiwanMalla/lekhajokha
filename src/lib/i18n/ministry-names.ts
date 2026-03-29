@@ -1,5 +1,6 @@
 /** Display labels: tracker uses English `responsible_ministry`; map to Nepali for UI. */
 const MINISTRY_NE: Record<string, string> = {
+  "Nepal Rastra Bank (NRB)": "नेपाल राष्ट्र बैंक (NRB)",
   "Prime Minister's Office": "प्रधानमन्त्री तथा मन्त्रिपरिषद्को कार्यालय",
   "Finance": "अर्थ मन्त्रालय",
   "Law, Justice & Parliamentary Affairs":

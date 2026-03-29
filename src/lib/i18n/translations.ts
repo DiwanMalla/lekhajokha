@@ -38,6 +38,25 @@ export const translations = {
       homeSectionTitle: "Nepal's Council of Ministers",
       homeSectionSubtitle:
         "The RSP-led government under PM Balendra Shah, sworn in on March 27, 2026.",
+      primaryLead: "Lead",
+      coordinating: "Coordinating",
+      involvementSummary: "{{primary}} lead • {{shared}} coordinating • {{subs}} sub-items",
+      overdue: "Overdue / past deadline",
+      nextDeadline: "Next deadline",
+      lastUpdated: "Tracker data last updated",
+      sortLabel: "Sort ministers",
+      sortRank: "Cabinet rank",
+      sortScore: "Tracker score (high first)",
+      sortPoints: "Commitments involved (high first)",
+      sortOverdue: "Overdue count (high first)",
+      sortName: "Name (A–Z)",
+      scoreFootnote:
+        "Tracker score = round((completed + 0.5×in progress) ÷ commitments you touch × 100). Coordinating (shared) points count the same as lead points for this headline number; open a profile to see lead vs coordinating breakdown.",
+      otherBodiesTitle: "Other key implementing bodies",
+      otherBodiesIntro:
+        "Not all 100 points sit in a single ministry. These institutions are the lead on the commitment record (NRB, NPC, or Investment Board). Ministers may still coordinate via “shared” roles on the same point.",
+      pointsTotal: "Commitments",
+      viewAllCommitments: "Browse all 100 points",
     },
     hero: {
       badge: "Live Tracking",
@@ -153,6 +172,25 @@ export const translations = {
       homeSectionTitle: "नेपाल सरकारको मन्त्रिपरिषद्",
       homeSectionSubtitle:
         "प्रधानमन्त्री बालेन्द्र शाहको नेतृत्वमा राष्ट्रिय स्वतन्त्र पार्टीको सरकार, मिति चैत्र १३, २०८२ (२७ मार्च २०२६) मा शपथ ग्रहण।",
+      primaryLead: "प्रमुख जिम्मेवार",
+      coordinating: "सहायक/समन्वय",
+      involvementSummary: "{{primary}} प्रमुख • {{shared}} समन्वय • {{subs}} उप-बुँदा",
+      overdue: "म्याद नाघेको",
+      nextDeadline: "अर्को म्याद",
+      lastUpdated: "ट्र्याकर डेटा अपडेट",
+      sortLabel: "क्रमबद्ध गर्नुहोस्",
+      sortRank: "मन्त्रिपरिषद् क्रम",
+      sortScore: "ट्र्याकर स्कोर (उच्च पहिले)",
+      sortPoints: "सम्बन्धित बुँदा (उच्च पहिले)",
+      sortOverdue: "म्याद नाघेको (उच्च पहिले)",
+      sortName: "नाम (क–ज्ञ)",
+      scoreFootnote:
+        "ट्र्याकर स्कोर = (सम्पन्न + ०.५×प्रगतिमा) ÷ सम्पूर्ण सम्बन्धित बुँदा × १००। समन्वय मात्र भएका बुँदा पनि यो सिर्जक अङ्कमा गणना हुन्छ; विवरणका लागि मन्त्री प्रोफाइल हेर्नुहोस्।",
+      otherBodiesTitle: "अन्य प्रमुख कार्यान्वयन निकाय",
+      otherBodiesIntro:
+        "सबै १०० बुँदा एउटै मन्त्रालयमा हुँदैनन्। निम्न संस्थाहरू रेकर्ड अनुसार प्रमुख जिम्मेवार छन् (NRB, NPC वा लगानी बोर्ड)। साझा भूमिकामा मन्त्रीहरू पनि जोडिन सक्छन्।",
+      pointsTotal: "प्रतिबद्धता",
+      viewAllCommitments: "१०० बुँदा सबै हेर्नुहोस्",
     },
     hero: {
       badge: "प्रत्यक्ष ट्र्याकिङ",

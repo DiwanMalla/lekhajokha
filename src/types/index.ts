@@ -33,6 +33,8 @@ export interface Commitment {
   category: string;
   ministry: string;
   responsible_ministry: string;
+  /** Cabinet ministries with coordinating / secondary accountability (not the lead body). */
+  shared_ministries?: string[];
   responsible_ministry_en?: string;
   responsible_ministry_ne?: string;
   status: Status;

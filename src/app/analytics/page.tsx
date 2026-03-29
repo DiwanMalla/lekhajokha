@@ -2,6 +2,7 @@ import Link from "next/link";
 import { cookies } from "next/headers";
 import { sampleCommitments } from "@/lib/sample-data";
 import { categoryMeta } from "@/lib/commitments";
+import { isOverdue } from "@/lib/deadline-date";
 
 export default async function AnalyticsPage() {
   const cookieStore = await cookies();
@@ -14,8 +15,8 @@ export default async function AnalyticsPage() {
   const inProgress = sampleCommitments.filter(
     (item) => item.status === "in_progress",
   ).length;
-  const overdue = sampleCommitments.filter(
-    (item) => new Date(item.deadline_date) < new Date(),
+  const overdue = sampleCommitments.filter((item) =>
+    isOverdue(item.deadline_date),
   ).length;
 
   const categoryScores = Object.entries(categoryMeta).map(([id, meta]) => {
@@ -97,7 +98,7 @@ export default async function AnalyticsPage() {
         </h2>
         <ul className="space-y-2 text-sm">
           {sampleCommitments
-            .filter((item) => new Date(item.deadline_date) < new Date())
+            .filter((item) => isOverdue(item.deadline_date))
             .slice(0, 15)
             .map((item) => (
               <li key={item.id}>
